@@ -1,15 +1,4 @@
-#!/usr/bin/env groovy
-
-def call(){
-def GOPATH = pwd();
-	stage('Check Distro'){
-		println "PackageName : " + "ngnix" + " SaidVersionInRecipe : " + "1.10.3";
-		
-		withEnv(["PNAME=nginx","SaidVersionInRecipe=1.10.3"]){
-			script { 
-				sh '''
-				
-				if [ -f "/etc/os-release" ]; then
+			if [ -f "/etc/os-release" ]; then
 					. /etc/os-release
 				else
 					echo "No /etc/os-release file found hence defaulting it to rhel";
@@ -37,10 +26,3 @@ def GOPATH = pwd();
 				else	
    					echo "Said Version In Recipe is same as available in repo. Going ahead."     
 				fi
-			''' 
-				
-			}
-		}
-		
-	}
-}
